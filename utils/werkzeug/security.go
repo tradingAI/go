@@ -10,7 +10,6 @@ import (
 	"golang.org/x/crypto/pbkdf2"
 )
 
-// ...
 const (
 	Method     = "pbkdf2:sha256"
 	SaltLength = 8
