@@ -21,14 +21,12 @@ const (
 	keyLength = 32
 )
 
-// GeneratePasswordHash ...
 func GeneratePasswordHash(password string) string {
 	salt := genSalt()
 	hash := hashString(salt, password)
 	return fmt.Sprintf("%s:%v$%s$%s", Method, Iterations, salt, hash)
 }
 
-// CheckPasswordHash ...
 func CheckPasswordHash(password string, hash string) bool {
 	if strings.Count(hash, "$") < 2 {
 		return false

@@ -11,7 +11,6 @@ import (
 	"github.com/golang/glog"
 )
 
-//ReadLines ...
 func ReadLines(filePath string) (lines []string, err error) {
 	bytes, err := ioutil.ReadFile(filePath)
 	if err != nil {
@@ -24,7 +23,6 @@ func ReadLines(filePath string) (lines []string, err error) {
 	return
 }
 
-//DoesFileExist ...
 func DoesFileExist(filePath string) bool {
 	stat, err := os.Stat(filePath)
 	if os.IsNotExist(err) {
@@ -36,7 +34,6 @@ func DoesFileExist(filePath string) bool {
 	return true
 }
 
-//DoesDirExist ...
 func DoesDirExist(dirPath string) bool {
 	stat, err := os.Stat(dirPath)
 	if os.IsNotExist(err) {
@@ -48,7 +45,6 @@ func DoesDirExist(dirPath string) bool {
 	return true
 }
 
-//WriteFile ...
 func WriteFile(outPath string, lines ...string) error {
 	outFile, err := os.Create(outPath)
 	if err != nil {
@@ -65,7 +61,6 @@ func WriteFile(outPath string, lines ...string) error {
 	return out.Flush()
 }
 
-//CreateDirIfNotExist ...
 func CreateDirIfNotExist(dirPath string) (err error) {
 	if DoesDirExist(dirPath) {
 		return
@@ -75,7 +70,6 @@ func CreateDirIfNotExist(dirPath string) (err error) {
 	return
 }
 
-// MustCreateNewDir ...
 func MustCreateNewDir(dirPath string) (err error) {
 	if _, e := os.Stat(dirPath); !os.IsNotExist(e) {
 		err = fmt.Errorf("folder %v exists", dirPath)
@@ -89,7 +83,6 @@ func MustCreateNewDir(dirPath string) (err error) {
 	return
 }
 
-// FilenameTrimExt ...
 func FilenameTrimExt(filePath string) string {
 	fullName := filepath.Base(filePath)
 	ext := filepath.Ext(fullName)

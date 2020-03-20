@@ -6,16 +6,13 @@ import (
 	"github.com/golang/glog"
 )
 
-// NotFoundHandler ...
-type NotFoundHandler struct {
-}
+type NotFoundHandler struct{}
 
 func (h *NotFoundHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	glog.Infof("404: %s %s", r.Method, r.RequestURI)
 	NotFound(w)
 }
 
-// MethodNotAllowedHandler ...
 type MethodNotAllowedHandler struct {
 }
 

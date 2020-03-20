@@ -16,7 +16,6 @@ const CharsetNumeric = "0123456789"
 
 var seededRand = rand.New(rand.NewSource(time.Now().UnixNano()))
 
-// String ...
 func String(n int) string {
 	b := make([]rune, n)
 	for i := range b {
@@ -25,7 +24,6 @@ func String(n int) string {
 	return string(b)
 }
 
-// StringWithCharset ...
 func StringWithCharset(n int, charset string) string {
 	b := make([]byte, n)
 	for i := range b {
