@@ -1,0 +1,9 @@
+version: '3.0'
+
+services:
+  bazel:
+    image: tradingai/bazel:latest
+    command:
+      /bin/bash /root/go/src/github.com/tradingAI/go/docker-compose.sh
+    volumes:
+      - .:/root/go/src/github.com/tradingAI/go
