@@ -10,17 +10,11 @@ import (
 // yields the time between two consecutive Poisson process events
 func Exponential(lambda float64) float64 {
 	u := rand.Float64()
-	/*
-		for u == 0.0 {
-			u = rand.Float64()
-		}
-	*/
 	return -math.Log(u) / lambda
 }
 
 // Zipf https://en.wikipedia.org/wiki/Zipf%27s_law
 func Zipf(mean float64) int {
-	// s = 1
 	N := 1
 	for float64(N)/harmonicNumber(N) < mean {
 		N++
