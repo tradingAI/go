@@ -1,4 +1,4 @@
-.PHONY: init
+.PHONY: init test
 
 init:
 	rm -f go.mod go.sum
