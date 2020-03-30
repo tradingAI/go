@@ -21,7 +21,7 @@ type DBConf struct {
 	ReconnectSec time.Duration `yaml:"reconnect_sec"`
 }
 
-func (c *DBConf) validate() (err error) {
+func (c *DBConf) Validate() (err error) {
 	if c.Host == "" {
 		err = err2.ErrEmptyDBHost
 		glog.Error(err)
