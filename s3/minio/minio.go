@@ -16,7 +16,7 @@ type MinioConf struct {
 	Secure    bool
 }
 
-func (m MinioConf) Validate() (err error) {
+func (m *MinioConf) Validate() (err error) {
 	if m.AccessKey == "" {
 		err = err2.ErrEmptyMinioAccessKey
 		glog.Error(err)
