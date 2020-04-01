@@ -10,6 +10,7 @@ const (
 	errUnknown errScope = ""
 	errDB               = "db_error"
 	errMinio            = "minio_error"
+	errRedis            = "redis_error"
 )
 
 var (
@@ -25,6 +26,10 @@ var (
 	ErrEmptyMinioSecretKey = makeError(errMinio, "secret_key is empty")
 	ErrEmptyMinioHost      = makeError(errMinio, "host is empty")
 	ErrInvalidMinioPort    = makeError(errMinio, "port is invalid")
+
+	// Redis error
+	ErrEmptyRedisHost   = makeError(errRedis, "missing Host")
+	ErrInvaldiRedisPort = makeError(errRedis, "invalid Port")
 )
 
 func makeError(scope errScope, msg ...string) error {
