@@ -29,14 +29,12 @@ func (c *RedisConf) Validate() (err error) {
 	return
 }
 
-func NewRedisClient(conf RedisConf) (c *redis.Conn, err error) {
-	client, err := redis.Dial("tcp", fmt.Sprintf("%s:%d", conf.Host, conf.Port))
+func NewRedisClient(conf RedisConf) (c redis.Conn, err error) {
+	c, err = redis.Dial("tcp", fmt.Sprintf("%s:%d", conf.Host, conf.Port))
 	if err != nil {
 		glog.Error(err)
 		return
 	}
-
-	c = &client
 
 	return
 }
