@@ -4,6 +4,6 @@ services:
   bazel:
     image: tradingai/bazel:latest
     command:
-      /bin/bash /root/go/src/github.com/tradingAI/go/docker-compose.sh
+      /bin/bash /go/src/github.com/tradingAI/go/docker-compose.sh
     volumes:
-      - .:/root/go/src/github.com/tradingAI/go
+      - .:/go/src/github.com/tradingAI/go
