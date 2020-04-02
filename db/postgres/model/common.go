@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/jinzhu/gorm"
-	proto "github.com/tradingAI/proto/gen/go/common"
+	common "github.com/tradingAI/proto/gen/go/common"
 )
 
 type Session struct {
@@ -25,9 +25,9 @@ const (
 	RoleUser  UserRole = "user"
 )
 
-var UserRoleLUT = map[UserRole]proto.UserRole{
-	RoleAdmin: proto.UserRole_ROLE_ADMIN,
-	RoleUser:  proto.UserRole_ROLE_USER,
+var UserRoleLUT = map[UserRole]common.UserRole{
+	RoleAdmin: common.UserRole_ROLE_ADMIN,
+	RoleUser:  common.UserRole_ROLE_USER,
 }
 
 type User struct {

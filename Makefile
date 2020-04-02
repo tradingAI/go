@@ -5,4 +5,4 @@ init:
 	go mod init && go mod tidy
 
 test:
-	docker-compose -f docker-compose.yml up bazel
+	docker-compose -f docker-compose.yml run bazel
