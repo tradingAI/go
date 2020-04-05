@@ -17,6 +17,7 @@ type Job struct {
 	TotalSteps       uint32        `gorm:"column:total_steps; not null" json:"total_steps"`
 	CurrentStep      uint32        `gorm:"column:current_step; not null" json:"current_step"`
 	GPUsIndex        pq.Int64Array `gorm:"type:integer[]; column:gpus_index" json:"gpus_index"`
+	Input            []byte        `gorm:"column:input" json:"input"`
 }
 
 func (Job) TableName() string {
