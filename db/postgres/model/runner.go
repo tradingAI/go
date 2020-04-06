@@ -19,6 +19,7 @@ type Runner struct {
 	AvaliableCPUMemory int64         `gorm:"column:available_cpu_memory; not null" json:"available_cpu_memory"`
 	GPUMemory          int64         `gorm:"column:gpu_memory; not null" json:"gpu_memory"`
 	AvaliableGPUMemory int64         `gorm:"column:available_gpu_memory; not null" json:"available_gpu_memory"`
+	Token              string        `gorm:"column:token; not null" json:"token"`
 }
 
 func (Runner) TableName() string {
