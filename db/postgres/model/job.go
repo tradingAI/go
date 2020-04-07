@@ -7,6 +7,7 @@ import (
 
 type Job struct {
 	gorm.Model
+	RequestID        string        `gorm:"column:request_id; not null" json:"request_id"`
 	RunnerID         string        `gorm:"column:runner_id; not null" json:"runner_id"`
 	Type             int           `gorm:"column:type; not null" json:"type"`
 	Status           int           `gorm:"column:status; not null" json:"status"`
@@ -18,6 +19,7 @@ type Job struct {
 	CurrentStep      uint32        `gorm:"column:current_step; not null" json:"current_step"`
 	GPUsIndex        pq.Int64Array `gorm:"type:integer[]; column:gpus_index" json:"gpus_index"`
 	Input            []byte        `gorm:"column:input" json:"input"`
+	Token            string        `gorm:"column:token" json:"token"`
 }
 
 func (Job) TableName() string {
