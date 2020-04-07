@@ -13,6 +13,7 @@ type Model struct {
 	UserID      uint64 `gorm:"column:user_id; not null" json:"user_id"`
 	Status      int    `gorm:"column:status; not null" json:"status"`
 	Bucket      string `gorm:"column:bucket; not null" json:"bucket"`
+	ObjName     string `gorm:"column:obj_name; not null" json:"obj_name"`
 }
 
 func (Model) TableName() string {
