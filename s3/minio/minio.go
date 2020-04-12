@@ -50,7 +50,7 @@ func (m *MinioConf) Validate() (err error) {
 }
 
 func NewMinioClient(conf MinioConf) (client *minio.Client, err error) {
-	client, err = minio.New(
+	client, err = minioV6.New(
 		fmt.Sprintf("%s:%d", conf.Host, conf.Port),
 		conf.AccessKey,
 		conf.SecretKey,
