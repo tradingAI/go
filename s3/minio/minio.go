@@ -60,7 +60,7 @@ func NewMinioClient(conf MinioConf) (client *Client, err error) {
 		return
 	}
 
-	client = Client{Client: c}
+	client = &Client{Client: c}
 
 	return
 }
