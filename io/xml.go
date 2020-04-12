@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 )
 
-//LoadXML ...
 func LoadXML(filePath string, dataPtr interface{}) (err error) {
 	content, err := ioutil.ReadFile(filePath)
 	if err != nil {
@@ -15,7 +14,6 @@ func LoadXML(filePath string, dataPtr interface{}) (err error) {
 	return
 }
 
-//SaveXML ...
 func SaveXML(filePath string, data interface{}) (err error) {
 	bytes, err := xml.Marshal(data)
 	if err != nil {

@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 )
 
-//SaveGOB ...
 func SaveGOB(filePath string, data interface{}) (err error) {
 	buf, err := SerializeGOB(data)
 	if err != nil {
@@ -16,7 +15,6 @@ func SaveGOB(filePath string, data interface{}) (err error) {
 	return
 }
 
-//LoadGOB ...
 func LoadGOB(filePath string, dataPtr interface{}) (err error) {
 	data, err := ioutil.ReadFile(filePath)
 	if err != nil {
@@ -26,7 +24,6 @@ func LoadGOB(filePath string, dataPtr interface{}) (err error) {
 	return
 }
 
-//SerializeGOB ...
 func SerializeGOB(data interface{}) ([]byte, error) {
 	var buffer bytes.Buffer
 	encoder := gob.NewEncoder(&buffer)
@@ -36,7 +33,6 @@ func SerializeGOB(data interface{}) ([]byte, error) {
 	return buffer.Bytes(), nil
 }
 
-//DeserializeGOB ...
 func DeserializeGOB(data []byte, dataPtr interface{}) (err error) {
 	buffer := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(buffer)

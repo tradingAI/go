@@ -6,7 +6,6 @@ import (
 	"io"
 )
 
-// CompressDeflate ...
 func CompressDeflate(data []byte) (compressed []byte, err error) {
 	deflated := bytes.NewBuffer(nil)
 	deflator := zlib.NewWriter(deflated)
@@ -24,7 +23,6 @@ func CompressDeflate(data []byte) (compressed []byte, err error) {
 	return
 }
 
-// UncompressInflate ...
 func UncompressInflate(data []byte) (uncompressed []byte, err error) {
 	inflator, err := zlib.NewReader(bytes.NewBuffer(data))
 	if err != nil {

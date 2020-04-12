@@ -8,14 +8,12 @@ import (
 	"github.com/golang/glog"
 )
 
-// GzipTar ...
 type GzipTar struct {
 	buffer     *bytes.Buffer
 	tarWriter  *tar.Writer
 	gzipWriter *gzip.Writer
 }
 
-// NewGzipTar ..
 func NewGzipTar() *GzipTar {
 	var buf bytes.Buffer
 	gw := gzip.NewWriter(&buf)
@@ -27,7 +25,6 @@ func NewGzipTar() *GzipTar {
 	}
 }
 
-// AddFile ...
 func (t *GzipTar) AddFile(name string, content []byte, mode int64) (err error) {
 	hdr := &tar.Header{
 		Name: name,
@@ -45,7 +42,6 @@ func (t *GzipTar) AddFile(name string, content []byte, mode int64) (err error) {
 	return
 }
 
-// Close ...
 func (t *GzipTar) Close() (content []byte, err error) {
 	if err = t.tarWriter.Close(); err != nil {
 		glog.Error(err)

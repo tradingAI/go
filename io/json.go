@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 )
 
-//SaveJSON ...
 func SaveJSON(filePath string, data interface{}) (err error) {
 	bytes, err := json.Marshal(data)
 	if err != nil {

@@ -7,13 +7,11 @@ import (
 	"github.com/golang/glog"
 )
 
-// Tar ...
 type Tar struct {
 	buffer *bytes.Buffer
 	writer *tar.Writer
 }
 
-// NewTar ..
 func NewTar() *Tar {
 	var buf bytes.Buffer
 	tw := tar.NewWriter(&buf)
@@ -23,7 +21,6 @@ func NewTar() *Tar {
 	}
 }
 
-// AddFile ...
 func (t *Tar) AddFile(name string, content []byte, mode int64) (err error) {
 	hdr := &tar.Header{
 		Name: name,
@@ -41,7 +38,6 @@ func (t *Tar) AddFile(name string, content []byte, mode int64) (err error) {
 	return
 }
 
-// Close ...
 func (t *Tar) Close() (content []byte, err error) {
 	if err = t.writer.Close(); err != nil {
 		glog.Error(err)

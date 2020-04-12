@@ -13,7 +13,6 @@ import (
 	"github.com/golang/glog"
 )
 
-// ReadTGZContent ...
 func ReadTGZContent(r io.Reader, names ...string) (data map[string][]byte, err error) {
 	gzf, err := gzip.NewReader(r)
 	if err != nil {
