@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/golang/glog"
-	"github.com/minio/minio-go"
 	minioV6 "github.com/minio/minio-go/v6"
 	err2 "github.com/tradingAI/go/error"
 )
@@ -49,8 +48,8 @@ func (m *MinioConf) Validate() (err error) {
 	return
 }
 
-func NewMinioClient(conf MinioConf) (client *minio.Client, err error) {
-	client, err = minio.New(
+func NewMinioClient(conf MinioConf) (client Client, err error) {
+	client.Client, err = minioV6.New(
 		fmt.Sprintf("%s:%d", conf.Host, conf.Port),
 		conf.AccessKey,
 		conf.SecretKey,
