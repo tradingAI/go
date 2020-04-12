@@ -1,10 +1,11 @@
-package server
+package minio
 
 import (
 	"fmt"
 
 	"github.com/golang/glog"
-	"github.com/minio/minio-go/v6"
+	"github.com/minio/minio-go"
+	minioV6 "github.com/minio/minio-go/v6"
 	err2 "github.com/tradingAI/go/error"
 )
 
@@ -14,6 +15,10 @@ type MinioConf struct {
 	Host      string
 	Port      int
 	Secure    bool
+}
+
+type Client struct {
+	*minioV6.Client
 }
 
 func (m *MinioConf) Validate() (err error) {
@@ -59,7 +64,7 @@ func NewMinioClient(conf MinioConf) (client *minio.Client, err error) {
 	return
 }
 
-func MinioUpload(client *minio.Client, bucket string, fp string, objName string, contentType string) (err error) {
+func (client *Client) MinioUpload(bucket string, fp string, objName string, contentType string) (err error) {
 	location := "us-east-1"
 	exists, err := client.BucketExists(bucket)
 	if err != nil {
@@ -77,7 +82,7 @@ func MinioUpload(client *minio.Client, bucket string, fp string, objName string,
 		glog.Infof("Successfully created bucket [%s]", bucket)
 	}
 
-	n, err := client.FPutObject(bucket, objName, fp, minio.PutObjectOptions{ContentType: contentType})
+	n, err := client.FPutObject(bucket, objName, fp, minioV6.PutObjectOptions{ContentType: contentType})
 	if err != nil {
 		glog.Error(err)
 		return
@@ -88,8 +93,8 @@ func MinioUpload(client *minio.Client, bucket string, fp string, objName string,
 	return
 }
 
-func MinioDownload(client *minio.Client, bucket string, fp string, objName string) (err error) {
-	err = client.FGetObject(bucket, objName, fp, minio.GetObjectOptions{})
+func (client *Client) MinioDownload(bucket string, fp string, objName string) (err error) {
+	err = client.FGetObject(bucket, objName, fp, minioV6.GetObjectOptions{})
 	if err != nil {
 		glog.Error(err)
 		return
